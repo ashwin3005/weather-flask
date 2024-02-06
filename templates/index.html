@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+     <style>
+         .weather-icon {
+            width: 130px;
+            height: 130px;
+        }
+        h4{ 
+            padding: 15px;
+            font-weight: bolder;
+            font-size: 34px;
+        }
+        .card{
+            border-radius: 20px !important;
+            background-color: rgb(214, 228, 240);
+        }
+     </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5 mb-4">How is the weather ?</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="POST" action="" class="mb-4">
+                    {{ form.hidden_tag() }}
+                    <div class="input-group">
+                        {{ form.city(size=20, class="form-control") }}
+                        <div class="input-group-append">
+                            {{ form.add_city(class="btn btn-primary") }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% if 'error' in data %}
+        <br>
+        <br>
+        <h3 class="text-center">{{ data['error'] }}</h3>
+        {% else %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card" >
+                    <h4 class="card-title text-center">{{ data['city'] }}, {{ data['country'] }}</h4>
+                    <img src="{{ data['icon'] }}" class="card-img-top weather-icon mx-auto mt-3" alt="Weather Icon">
+                    <br>
+                    <h5 class="text-center">{{ data['weather'] }}</h5>
+                    <div class="card-body">
+                        <p class="card-text">Date: {{ data['time'].split()[0] }}</p>
+                        <p class="card-text">Time: {{ data['time'].split()[1] }}</p>
+                        <p class="card-text">Temperature: {{ data['temp'] }}°C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
