@@ -1,8 +1,9 @@
+import os
 from flask import Flask, render_template
 from forms import WeatherForm
 import requests
 
-API_KEY = "d55e35476a57424082685622240602"
+API_KEY = os.environ.get("API_KEY")
 
 def get_data(city):
 
