@@ -4,6 +4,10 @@
 
 This is a simple web application designed to display the weather of any city you search. This project serves as a learning opportunity for understanding [Flask](https://flask.palletsprojects.com/), "a micro web framework in Python", and integrating with APIs.
 
+
+![image](https://github.com/ashwin3005/weather-flask/assets/96253622/93badc9c-8a76-4c8d-80ee-d972b31fdac4)
+
+
 ## How to run
 
 To run the this application, follow these steps:
